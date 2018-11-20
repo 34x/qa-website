@@ -15,7 +15,7 @@ web_profiler:
 doctrine:
     dbal:
         driver: pdo_sqlite
-        path: '%kernel.project_dir%/app/sqlite.db'
+        path: '%kernel.project_dir%/var/sqlite.db'
 
 monolog:
     handlers:
