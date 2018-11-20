@@ -28,8 +28,18 @@ require_once(__DIR__ . '/header.php');
 <?php
 require_once(__DIR__ . '/footer.php');
 
-$db_url = $_SERVER['DATABASE_URL'];
+$db_url = getenv('DATABASE_URL');
 
-$dbh = new PDO($db_url);
+$db = parse_url($db_url);
 
-echo null !== $dbh;
+$pdo = new PDO('pgsql:' . sprintf(
+    'host=%s;port=%s;user=%s;password=%s;dbname=%s',
+    $db['host'],
+    $db['port'],
+    $db['user'],
+    $db['pass'],
+    ltrim($db['path'], '/')
+));
+
+
+echo ((null !== $pdo) ? 'connected' : 'not connected');
