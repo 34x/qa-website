@@ -27,3 +27,7 @@ require_once(__DIR__ . '/header.php');
 </div>
 <?php
 require_once(__DIR__ . '/footer.php');
+
+$db_url = $_SERVER['DATABASE_URL'];
+
+$dbh = new PDO($db_url');
