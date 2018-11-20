@@ -17,12 +17,12 @@ class DefaultController extends Controller
     {
         $repository = $this->getDoctrine()->getRepository(Post::class);
 
-        $products = $repository->findAll();
+        $posts = $repository->findAll();
 
-        var_dump($products);die();
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+            'base_dir' => realpath($this->getParameter('kernel.project_dir')) . DIRECTORY_SEPARATOR,
+            'posts' => $posts,
         ]);
     }
 }
