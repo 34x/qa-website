@@ -2,6 +2,8 @@
 
 ### Composer ###
 composer.phar
-/vendor/
+!vendor/
+vendor/*
+!vendor/doctrine
 var/*
 !var/.gitignore
