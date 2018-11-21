@@ -10,8 +10,10 @@ imports:
 # Doctrine Configuration
 doctrine:
     dbal:
-        url: "%env(DATABASE_URL)%"
-        charset: UTF8
+        driver: pdo_sqlite
+        path: '%kernel.project_dir%/var/sqlite.db'
+        # url: "%env(DATABASE_URL)%"
+        # charset: UTF8
 
 monolog:
     handlers:
