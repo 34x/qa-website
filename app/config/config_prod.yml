@@ -10,7 +10,7 @@ imports:
 # Doctrine Configuration
 doctrine:
     dbal:
-        server_version: 10.6
+        server_version: 10
         url: "%env(DATABASE_URL)%"
 
 monolog:
