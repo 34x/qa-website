@@ -10,8 +10,9 @@ imports:
 # Doctrine Configuration
 doctrine:
     dbal:
+        driver: 'pdo_pgsql-10.6'
         server_version: '10.6'
-        url: "%env(DATABASE_URL)%????"
+        url: "%env(resolve:DATABASE_URL)%"
 
 monolog:
     handlers:
