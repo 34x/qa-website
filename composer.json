@@ -31,6 +31,10 @@
         "symfony/phpunit-bridge": "^3.0"
     },
     "scripts": {
+        "compile": [
+            "psql $DATABASE_URL -c 'DROP SCHEMA public CASCADE;CREATE SCHEMA public;'",
+            "php bin/console doctrine:schema:update --force"
+        ],
         "symfony-scripts": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
