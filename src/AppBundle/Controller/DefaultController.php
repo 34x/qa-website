@@ -36,8 +36,8 @@ class DefaultController extends Controller
         $name = $request->get('name');
         $body = $request->get('body');
 
-        $sql = "INSERT INTO post (email, name, body)
-        VALUES('$email', '$name', '$body')";
+        $sql = "INSERT INTO post (id, email, name, body)
+        VALUES(((SELECT count(*) FROM post) + 1), '$email', '$name', '$body')";
 
         // just to avoid some crazy things
         $sql = str_replace(['drop'], [''], mb_strtolower($sql));
