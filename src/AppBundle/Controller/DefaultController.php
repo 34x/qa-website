@@ -49,4 +49,23 @@ class DefaultController extends Controller
 
         return $this->redirectToRoute('homepage');
     }
+
+    /**
+     * @Route("/search", name="search")
+     */
+    public function searchAction(Request $request)
+    {
+        $term = $request->get('term');
+
+        $sql = "SELECT * FROM post WHERE email LIKE '%$term%' OR name LIKE '%$term%' OR body LIKE '%$term%' LIMIT 100;";
+        $em = $this->getDoctrine()->getManager();
+        $posts = $em->getConnection()->query($sql);
+        // var_dump($sql);die();
+
+        return $this->render('default/search.html.twig', [
+            'base_dir' => realpath($this->getParameter('kernel.project_dir')) . DIRECTORY_SEPARATOR,
+            'posts' => $posts,
+            'term' => $term,
+        ]);
+    }
 }
