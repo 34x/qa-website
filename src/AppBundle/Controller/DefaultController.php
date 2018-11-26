@@ -25,4 +25,28 @@ class DefaultController extends Controller
             'posts' => $posts,
         ]);
     }
+
+    /**
+     * @Route("/create_post", name="createPost")
+     */
+    public function createPostAction(Request $request)
+    {
+        $post = new Post();
+        $email = $request->get('email');
+        $name = $request->get('name');
+        $body = $request->get('body');
+
+        $sql = "INSERT INTO post (email, name, body)
+        VALUES('$email', '$name', '$body')";
+
+        // just to avoid some crazy things
+        $sql = str_replace(['drop'], [''], mb_strtolower($sql));
+
+        $em = $this->getDoctrine()->getManager();
+        // $stmt = $em->getConnection()->prepare($sql);
+        // $stmt->execute();
+        $em->getConnection()->exec($sql);
+
+        return $this->redirectToRoute('homepage');
+    }
 }
