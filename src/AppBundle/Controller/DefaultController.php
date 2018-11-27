@@ -74,6 +74,6 @@ class DefaultController extends Controller
      */
     public function apiAction(Request $request)
     {
-        return new Response('Your user agent: ' . $_SERVER['HTTP_USER_AGENT']);
+        return new Response('Your user agent: ' . $_SERVER['HTTP_USER_AGENT'] . "\n");
     }
 }
