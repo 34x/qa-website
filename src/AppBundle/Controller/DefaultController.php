@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 use AppBundle\Entity\Post;
@@ -66,5 +67,13 @@ class DefaultController extends Controller
             'posts' => $posts,
             'term' => $term,
         ]);
+    }
+
+    /**
+     * @Route("/api", name="api")
+     */
+    public function apiAction(Request $request)
+    {
+        return new Response('Your user agent: ' . $_SERVER['HTTP_USER_AGENT']);
     }
 }
