@@ -36,8 +36,8 @@ class DefaultController extends Controller
         $name = $request->get('name');
         $body = $request->get('body');
 
-        $sql = "INSERT INTO post (id, email, name, body)
-        VALUES(((SELECT count(*) FROM post) + 1), '$email', '$name', '$body')";
+        $sql = "INSERT INTO post (id, email, name, body, ip)
+        VALUES(((SELECT count(*) FROM post) + 1), '$email', '$name', '$body', '${_SERVER['REMOTE_ADDR']}')";
 
         // just to avoid some crazy things
         $sql = str_replace(['drop'], [''], mb_strtolower($sql));

@@ -42,6 +42,13 @@ class Post
      */
     private $body;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ip", type="string", length=16, nullable=true)
+     */
+    private $ip;
+
 
     /**
      * Get id
@@ -123,6 +130,30 @@ class Post
     public function getBody()
     {
         return $this->body;
+    }
+
+    /**
+     * Set ip
+     *
+     * @param string $ip
+     *
+     * @return Post
+     */
+    public function setIp($ip)
+    {
+        $this->ip = $ip;
+
+        return $this;
+    }
+
+    /**
+     * Get body
+     *
+     * @return string
+     */
+    public function getIp()
+    {
+        return $this->ip;
     }
 }
 
