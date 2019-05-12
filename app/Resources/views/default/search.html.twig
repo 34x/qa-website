@@ -6,4 +6,27 @@
         Trying to search: <blockquote class="blockquote">{{ term }}</blockquote>
     </div>
 </div>
+<div class="row">
+    <div class="col-sm-12">
+        {% for post in posts %}
+            <div class="row">
+                <div class="col-sm-12">
+                    {{ post.name }} ({{ post.email }})
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <blockquote class="blockquote">
+                        {{ post.body|raw }}
+                    </blockquote>
+                </div>
+            </div>
+            <hr />
+        {% else %}
+            <div class="row">
+            No posts found
+            </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
